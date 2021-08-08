@@ -15,7 +15,8 @@ for i in range(C):
             count += 1
         else:
             count = 0
-        score += count
+        score += count #score = score + count (누적)
+
     score_list.append(score)
 
 for score in score_list:

@@ -149,18 +149,7 @@ import numpy
 #     count = 0
     
 #######################################################
-#######################################################
-#######################################################
-# 2577번 (숫자의 개수)
-# a = int(sys.stdin.readline())
-# b = int(sys.stdin.readline())
-# c = int(sys.stdin.readline())
 
-# result = list(str(a * b * c))
-# for i in range(10):
-#     print(result.count(str(i)))
-
-#######################################################
 # 2675번 (문자열 반복)
 # T = int(sys.stdin.readline())
 

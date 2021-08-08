@@ -11,7 +11,6 @@ for i in range(C):
         if i > N_avg:
             count += 1
             
-    
     t = (count / N[0])*100
     print(f'{t:.3f}%')
 
