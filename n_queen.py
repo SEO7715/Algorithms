@@ -19,7 +19,7 @@ def set(i: int):
             if j == (N-1):
                 put()
             else:
-                flag_a[j] = True
+                flag_a[j] = flag_b[i +j] + flag_c[i - j + (N-1)] = True
                 set(i + 1)
                 flag_a[j] = False
 
