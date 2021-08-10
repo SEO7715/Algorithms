@@ -1,21 +1,23 @@
 import sys
 
-def Qsort(lt, rt):
-    if lt < rt:
-        pos = lt
-        pivot = nums[rt]
+array = list(map(int, sys.stdin.readline().split()))
 
-        for i in range(lt, rt):
-            if nums[i] <= pivot:
-                nums[i], nums[pos] = nums[pos], nums[i]
-                pos += 1
-        nums[pos], nums[rt] = nums[rt], nums[pos]
-        Qsort(lt, pos-1)
-        Qsort(pos+1, rt)
+def Qsort (array):
+    if len(array) <= 1:
+        return array
+    pivot = len(array) // 2
+    left = []
+    right = []
 
-n = int(sys.stdin.readline())
-nums = list(int(sys.stdin.readline()) for _ in range(n))
+    for i in array:
+        if i < pivot:
+            left.append(i)
+        elif i > pivot:
+            right.append(i)
+    return Qsort(left) + [pivot] + Qsort(right)
 
-Qsort(0, len(nums) -1)
-for n in nums:
-    print(n)
+# print(Qsort(array))
+
+for i in array:
+    print(Qsort(set(array)))
+    

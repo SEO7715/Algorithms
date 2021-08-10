@@ -1,7 +1,6 @@
 # 시간초과
 import sys
 
-
 n, r, c = map(int, sys.stdin.readline().split())
 count = 0
 
