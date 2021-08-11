@@ -13,10 +13,8 @@ except_case = list(permutations(people, 2))
 
 for i in range(len(except_case)):
     if (except_case[i][0] + except_case[i][1]) == (sum_people - 100):
-        a = except_case[i][0]
-        b = except_case[i][1]
-        people.remove(a)
-        people.remove(b)
+        people.remove(except_case[i][0])
+        people.remove(except_case[i][1])
         break
 
 final_people = sorted(people)

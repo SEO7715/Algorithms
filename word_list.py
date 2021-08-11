@@ -12,4 +12,3 @@ word_list.sort(key=len)
 
 for word in word_list:
     print(word)
-
