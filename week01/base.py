@@ -102,15 +102,15 @@ import sys
 #######################################################
 
 # 2562번 (최댓값)
-b = []
+# b = []
 
-for i in range(9):
-    a = int(sys.stdin.readline())
-    b.append(a)
-print(b)
-max_num = max(b)
-print(max_num)
-print(b.index(max_num)+ 1)
+# for i in range(9):
+#     a = int(sys.stdin.readline())
+#     b.append(a)
+# print(b)
+# max_num = max(b)
+# print(max_num)
+# print(b.index(max_num)+ 1)
 
 
 # 8958번 (ox퀴즈) 다시하기
