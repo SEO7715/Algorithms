@@ -14,7 +14,7 @@ def binary_search(target, data):
         else:
             end = mid -1
 
-    return None # 무슨의미..?
+    return None 
 
 if __name__ == "__main__":
     list = [i**2 for i in range(11)]
@@ -27,8 +27,7 @@ if __name__ == "__main__":
     else:
         print("찾는 타겟 {}가 없습니다.".format(target))
 
-
-# 바이너리 서치 재귀적 구현 #여기선.. data 정렬 필요없나..?정렬된 데이터라는 전제하에 하는 건지..?
+# 바이너리 서치 재귀적 구현
 def binary_search_recursion(target, start, end, data):
     if start > end:
         return None
