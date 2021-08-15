@@ -16,7 +16,7 @@ for case in case_list:
             if lis[mid] < case:
                 left = mid + 1
             else:
-                right = mid
+                right = mid #왜..?
         lis[right] = case
 
 print(len(lis)-1) #처음에 넣어준 lis = [0] 에서 0 은 카운트 제외해주어야 하니깐!

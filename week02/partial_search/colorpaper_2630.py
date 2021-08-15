@@ -1,33 +1,24 @@
-# import sys
+import sys
 
-# N, C = map(int, sys.stdin.readline().split())
-# place_list = [int(sys.stdin.readline()) for _ in range(N)]
+N = int(sys.stdin.readline())
+paper_list = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+result = []
 
-class Stack():
-    def __init__(self):
-        self.stack = []
-    
-    def push(self, data): #list의 append 메소드 활용한 구현
-        self.stack.append(data)
-    
-    def pop(self): #list의 pop 메소드 활용한 구현
-        pop_object = None
-        if self.isEmpty(): #먼저 isEmpty 메소드 활용하여 확인
-            print("-1")
-        else:
-            pop_object = self.stack.pop()
-        return pop_object 
-    
-    def top(self):
-        top_object = None
-        if self.isEmpty():
-            print("Stack is Empty")
-        else:
-            top_object = self.stack[-1]
-        return top_object
+def solution(x, y, N):
+    color = paper_list[x][y]
+    for i in range(x, x+N):
+        for j in range(y, y+N):
+            if color != paper_list[i][j]:
+                solution(x, y, N//2)
+                solution(x, y+ N//2, N//2)
+                solution(x+ N//2, y, N//2)
+                solution(x+ N//2, y + N//2, N//2)
+                return #함수종료
+    if color == 0:
+        result.append(0)
+    else:
+        result.append(1)
 
-    def isEmpty(self):
-        is_empty = False
-        if len(self.stack) == 0:
-            is_empty = True
-        return is_empty
+solution(0, 0, N)
+print(result.count(0))
+print(result.count(1))

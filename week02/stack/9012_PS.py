@@ -1,27 +1,21 @@
 import sys
 
 T = int(sys.stdin.readline())
+stack= []
 
 for _ in range(T):
-    case  = sys.stdin.readline()
-    case_list = list(case)
-    sum = 0
-
-    for j in case_list:
-        if j == "(": 
-            sum += 1
-
-        elif j == ")":
-            sum -= 1
-        
-        if sum < 0: #왜이렇게해야하지..? 반대로 하면 에러남,,왜지..?
-            print("NO")
-            break
-
-    if sum == 0:
+    ps = sys.stdin.readline()
+    is_empty = False
+    for i in range(len(ps)):
+        if ps[i] == "(": 
+            stack.append(ps[i])
+        else:
+            if not stack:
+                is_empty = True
+                break
+            else:
+                stack.pop()
+    if not stack and not is_empty: #스택이 없고, 데이터가 비어 있는 게 아니면
         print("YES")
-    
-    elif sum > 0: #왜이렇게해야하지..? 반대로 하면 에러남,,왜지..?
+    else:
         print("NO")
-        
-    
