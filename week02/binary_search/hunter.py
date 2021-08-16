@@ -15,8 +15,8 @@ for a, b in animal:
         if place_list[mid] < a:
             start = mid + 1
         else:
-            end = mid #왜..?
-    if abs(place_list[end]-a)+b <= L or abs(place_list[end-1]-a)+b <= L: #왜..?
+            end = mid 
+    if abs(place_list[end]-a)+b <= L or abs(place_list[end-1]-a)+b <= L: 
         count += 1
 
 print(count)
