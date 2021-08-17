@@ -1,17 +1,15 @@
 import sys
- 
-input = sys.stdin.readline
-n = int(input())
-number_list = list(map(int, input().split()))
-stack = []
-result = [0] * n
 
-for i in range(n):
-    number = number_list[i] 
-    while stack and number_list[stack[-1]] < number:
+N, K = map(int, sys.stdin.readline().split())
+number = list(sys.stdin.readline())
+
+k = K
+stack = []
+
+for i in range(N): 
+    while k > 0 and stack and stack[-1] < number[i]:
         stack.pop()
-    if stack:
-        result[i] = stack[-1] + 1
-    stack.append(i)
-    
-# print(' '.join(map(str, result)))
+        k -= 1
+    stack.append(number[i])
+
+print(''.join(stack[:N-K]))
