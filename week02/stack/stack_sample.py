@@ -26,3 +26,4 @@ class Stack():
         if len(self.stack) == 0:
             is_empty = True
         return is_empty
+    
