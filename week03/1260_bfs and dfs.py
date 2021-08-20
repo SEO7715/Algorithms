@@ -1,38 +1,39 @@
-def bfs(v):
-    q = deque()
-    q.append(v)
-    visit_list[v] = 1 #방문했으면, 1
-    while q: #q가 있는동안
-        v = q.popleft() 
-        print(v, end=" ")
-        for i in range(1, n + 1):
-            if visit_list[i] == 0 and graph[v][i] == 1: #미방문 상태이고, 간선으로 연결됨
-                q.append(i)
-                visit_list[i] = 1 #방문했으면, 1로 표시
+def bfs(graph, start):
+    visited = []
+    adjacency_nodes = deque([start]) #인접 노드
+    
+    while adjacency_nodes:
+        node = adjacency_nodes.popleft()
+        if node not in visited:
+            visited.append(node)
+            adjacency_nodes.extend(graph[node])
+    
+    return visited
 
-def dfs(v):
-    visit_list2[v] = 1
-    print(v, end=' ')
-    for i in range(1, n+1):
-        if visit_list2[i] == 0 and graph[v][i] == 1:
-            dfs(i)
+def dfs_recur(graph, start, visited = []):
+    visited.append(start)
+    for node in graph[start]:
+        if node not in visited:
+            dfs_recur(graph, node, visited)
+    return visited
 
 if __name__ == '__main__':
-
     from collections import deque
     import sys
     read = sys.stdin.readline
 
-    n, m, v = map(int, read().split()) #n 정점 / m 간선/ v 시작 번호
+    n, m, v = map(int, read().split()) 
+    #n 정점 / m 간선/ v 시작 번호
 
-    graph = [[0] * (n + 1) for _ in range(n+1)] #왜지..?
-    visit_list = [0] * (n + 1) #미방문 = 0
-    visit_list2 = [0] * (n + 1)
+    graph = [[] for _ in range(n+1)]
+    #2차원 배열 만들기/ 인덱스 번호 일치 위해 n+1 숫자 사용
 
     for _ in range(m): #간선 수 범위 
-        a, b = map(int, read().split()) #간선이 연결하는 두 정점 번호
-        graph[a][b] = graph[b][a] = 1
+        a, b = map(int, sys.stdin.readline().strip().split()) 
+        # 간선이 연결하는 두 정점 번호
+        graph[a].append(b)
+        graph[b].append(a)
 
-    dfs(v)
-    print()
-    bfs(v)
+
+    print(dfs_recur(graph, v))
+    print(bfs(graph, v))
