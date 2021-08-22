@@ -8,7 +8,7 @@ indegree = [0] * (v + 1)
 print(indegree) # [0, 0, 0, 0, 0]
 # 각 노드에 연결된 간선 정보를 담기 위한 연결 리스트 초기화
 graph = [[] for i in range(v + 1)]
-print(graph) # [[], [], [], [], []]
+print(graph) # 간선을 통해 모든 정점을 방문하는 것을 그래프 탐색이라 일컬음
 # 방향 그래프의 모든 간선 정보를 입력 받기
 for _ in range(e):
     a, b = map(int, input().split())
