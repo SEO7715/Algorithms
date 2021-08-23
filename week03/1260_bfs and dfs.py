@@ -1,6 +1,6 @@
 def bfs(graph, start):
     visited = []
-    adjacency_nodes = deque([start]) #인접 노드
+    adjacency_nodes = deque([start]) # 인접 노드
     
     while adjacency_nodes:
         node = adjacency_nodes.popleft()

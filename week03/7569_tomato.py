@@ -7,6 +7,7 @@ matrix = []
 frontier = []
 goal_count = 0
 
+# 3차원 리스트 만들기
 for h in range(H):
     space = []
     for x in range(N):
