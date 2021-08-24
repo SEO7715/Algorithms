@@ -1,5 +1,5 @@
 
-def dfs(graph, start_node): 
+def dfs(graph, start_node):
     visit = list() # 방문했던 노드 목록 순차 저장할 리스트
     stack = list() # 다음으로 방문할 노드 목록 순차 저장할 리스트(스택)
     

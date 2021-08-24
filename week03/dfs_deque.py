@@ -12,7 +12,6 @@ def dfs2(graph, start_node):
 
     while need_visited:
         node = need_visited.popleft()
-        print(node)
         #시작 노드 지정
         if node not in visited:
             # 해당 노드가 방문 내역에 없을 경우

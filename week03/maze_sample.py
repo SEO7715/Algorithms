@@ -26,4 +26,4 @@ def bfs(x, y):
                     queue.append((nx, my))
 
 bfs(0, 0)
-print(maze_matrix[n-1][m-1])
+# print(maze_matrix[n-1][m-1])
