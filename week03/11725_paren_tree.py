@@ -13,7 +13,7 @@ for i in range(N-1):
     nodes[b].append(a)
 
 def dfs(start):
-    for i in nodes[start]: #시작 노드에 있는 i 에 대하여
+    for i in nodes[start]: # 시작 노드에 있는 i 에 대하여
         if parents[i] == 0: # 부모 노드 i의 값이 0인 경우, 
             parents[i] = start # 부모 노드 i의 값이 시작 지점이 됨
             print(i, start)

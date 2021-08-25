@@ -29,7 +29,8 @@ for i in range(N):
     for j in range(N):
         if dfs(i, j) == True:
             result.append(count)
-            count = 0
+            # print(result) [7], [7, 8], [7, 8, 9]
+            count = 0 
 
 print(len(result))
 result.sort()
