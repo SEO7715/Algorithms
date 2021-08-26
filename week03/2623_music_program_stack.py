@@ -1,3 +1,36 @@
+import sys
+from collections import defaultdict, deque
+
+
+# using queue
+def music_queue(N, graph, in_degree):
+
+    # enque nodes with 0 indegree
+    q = deque()
+    for node in range(1, N+1):
+        if in_degree[node] == 0:
+            q.append(node)
+
+    # topological sorting using queue
+    # remove nodes with 0 indegree --> enque new nodes with 0 indegree
+    result = []
+    while q:
+        curr = q.popleft()
+        result.append(curr)
+
+        for next in graph[curr]:
+            in_degree[next] -= 1
+            if in_degree[next] == 0:
+                q.append(next)
+
+
+    if len(result) == N:
+        print(*result, sep='\n')
+    else:
+        print(0)
+    return
+
+
 # using dfs(recursion)
 def music_dfs(N, graph, in_degree):
 
@@ -21,13 +54,14 @@ def music_dfs(N, graph, in_degree):
         route.pop()
         result.append(curr)
 
+
     visited = [False] * (N+1)   # 노드 방문 여부 기록
     route = []                  # 탐색 경로 기록
     has_cycle = [False]         # 순환구조여부 파악
-    result = []                 # 수행 결과를 담을 리스트
-    
+    result = []
+
     for node in range(N+1):
-        if not in_degree[node]: # 진입차수 0인 노드 탐색 
+        if not in_degree[node]: # 진입차수 0인 노드 탐색
             _dfs(node)
 
     if has_cycle[0]:            # 순환구조시 0 출력
@@ -37,22 +71,17 @@ def music_dfs(N, graph, in_degree):
     return 
 
 #########################################################
-__if__ = '__main__'
-
-from collections import defaultdict
-import sys
-input = sys.stdin.readline
 
 # inputs
-N, M = map(int, sys.stdin.readline().split()) 
-graph  = defaultdict(list) # defaultdict(<class 'list'>, {})
-# print(graph)
-in_degree = [0] * (N+1) # 진입차수 0으로 초기화
-
+N, M = map(int, sys.stdin.readline().split())
+graph  = defaultdict(list)
+in_degree = [0] * (N+1)
 for _ in range(M):
     nums = list(map(int, sys.stdin.readline().split()))
     for i in range(1, nums[0]):
         in_degree[nums[i+1]] += 1
         graph[nums[i]].append(nums[i+1])
 
+# 택 1
+# music_queue(N, graph, in_degree)
 music_dfs(N, graph, in_degree)

@@ -23,6 +23,7 @@ def dfs(x, y):
         apart_list[x][y] = 0 # 중복 count 방지
         for i in range(4):
             dfs(x + dx[i], y + dy[i])
+        # print(count)
         return True
 
 for i in range(N):
@@ -30,7 +31,7 @@ for i in range(N):
         if dfs(i, j) == True:
             result.append(count)
             # print(result) [7], [7, 8], [7, 8, 9]
-            count = 0 
+            count = 0
 
 print(len(result))
 result.sort()
