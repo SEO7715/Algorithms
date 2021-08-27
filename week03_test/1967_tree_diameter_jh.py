@@ -3,43 +3,30 @@ sys.setrecursionlimit(100000)
 from collections import defaultdict
 
 # inputs
-n = int(sys.stdin.readline())
-graph = defaultdict(list)
-in_degree = defaultdict(int)
-for _ in range(n-1):
-    num1, num2, weight = map(int, sys.stdin.readline().split())
-    graph[num1].append((num2, weight))
-    graph[num2].append((num1, weight))
-    in_degree[num1] += 1
-    in_degree[num2] += 1
+def max_diameter():
 
-one_indegrees = [i for i in in_degree if in_degree[i] == 1] # indgree 1 찾기
-start = one_indegrees[0] if one_indegrees else 0            # indexError 방지
+    n = int(sys.stdin.readline())
+    graph = defaultdict(list)
+    max_dia = [0]
 
-def max_diameter(graph, start):
+    for _ in range(n-1):
+        parent_node, child_node, weight = map(int, sys.stdin.readline().split())
+        graph[parent_node].append((child_node, weight)) # 단방향
+
 
     def _dfs(curr, curr_weight):
 
-        visited[curr] = True
-        branches = [0]
+        sub_length = [0]
         for next, next_weight in graph[curr]:
-            if not visited[next]:
-                route[0] += next_weight
-                branches.append(_dfs(next, next_weight))
-                route[0] -= next_weight
+            sub_length.append(_dfs(next, next_weight))
 
         # update
-        max_dia[0] = max(max_dia[0], sum(sorted(branches + route[:], reverse=True)[:2]))
-        return max(branches) + curr_weight
+        sub_length.sort(reverse=True)
+        max_dia[0] = max(max_dia[0], sum(sub_length[:2])) 
+        # 구한 길이 중 가장 긴 첫번째, 두번째 길이의 합과 현재 max 값 중 비교하여 max 값 갱신 
+        return sub_length[0] + curr_weight # '가장 긴 거리 + 가중치' 반환
 
-    if not graph:
-        return 0
-
-    visited = defaultdict(lambda: False)
-    max_dia = [0]
-    route = [0]
-
-    _dfs(start, graph[start][0][1])
+    _dfs(1, 0)
     return max_dia[0]
 
-print(max_diameter(graph, start))
+print(max_diameter())

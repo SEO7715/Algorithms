@@ -14,6 +14,7 @@ def multiply(A, B):   # N X N Matrix A, B의 곱
             component = 0
             for k in range(N):
                 component += A[i][k] * B[k][j]
+                print(component)
             C[i][j] = component % 1000
     return C
 
