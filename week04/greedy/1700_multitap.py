@@ -16,8 +16,8 @@ for i in range(use_number):
             named_list.append(need_list[i])
             checkIdx = i
 
-        else: 
-    
+        else:
+
             check_index = 0
             prev = -1
 
