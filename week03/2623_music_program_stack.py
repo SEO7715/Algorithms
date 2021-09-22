@@ -1,7 +1,6 @@
 import sys
 from collections import defaultdict, deque
 
-
 # using queue
 def music_queue(N, graph, in_degree):
 
