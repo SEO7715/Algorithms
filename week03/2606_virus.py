@@ -1,8 +1,8 @@
 import sys
 input = sys.stdin.readline
 
-computer_n = int(input())
-computer_connect = int(input())
+computer_n = int(input()) #n
+computer_connect = int(input()) #edge
 
 computer_matrix = [[] for _ in range(computer_n + 1)]
 
