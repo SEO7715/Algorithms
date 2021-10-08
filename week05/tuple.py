@@ -1,5 +1,3 @@
-
-
 def solution(s):
     answer = []
     s = s[2:-2]
