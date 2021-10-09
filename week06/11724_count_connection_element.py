@@ -1,6 +1,5 @@
 import sys
 sys.setrecursionlimit(10000)
-from collections import defaultdict
 
 node, edge = map(int, sys.stdin.readline().split())
 graph = [[] for _ in range(node+1)] # [[], [], [], [], [], [], []]
@@ -20,7 +19,6 @@ def dfs_recursive(v):
     for node in graph[v]:
         if not visited[node]:
             dfs_recursive(node)
-            print(visited)
 
 for i in range(1, node+1):
     if not visited[i]:
