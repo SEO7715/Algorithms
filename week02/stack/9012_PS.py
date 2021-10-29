@@ -1,21 +1,33 @@
-import sys
+def 괄호():
+    import sys
 
-T = int(sys.stdin.readline())
-stack= []
+    def is_VPS(string):
+        # 빈 스택
+        stack = []
 
-for _ in range(T):
-    ps = sys.stdin.readline()
-    is_empty = False
-    for i in range(len(ps)):
-        if ps[i] == "(": 
-            stack.append(ps[i])
-        else:
-            if not stack:
-                is_empty = True
-                break
-            else:
+        # 스트링 순회하면서 스택 구성
+        for char in string:
+            # '('인 경우 stack에 넣는다
+            if char == '(':
+                stack.append(char)
+            # ')'인 경우
+            elif not stack: # stack이 비어있을 경우 False
+                return "NO"
+            else: # '('이면서 비어있지 않은 경우 --> '(' pop
                 stack.pop()
-    if not stack and not is_empty: #스택이 없고, 데이터가 비어 있는 게 아니면
-        print("YES")
-    else:
-        print("NO")
+
+        # 순회 마치고 스택이 비어있는지 확인
+        if stack:
+            return "NO"    # stack에 남아있으면 False
+        return "YES"         # stack이 비어있을 때 비로소 VPS
+
+
+    N = int(sys.stdin.readline())
+    answers = [None] * N
+    for i in range(N):
+        string = sys.stdin.readline().strip()
+        answers[i] = is_VPS(string)
+
+    print(*answers, sep='\n')
+
+괄호()
