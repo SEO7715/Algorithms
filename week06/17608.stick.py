@@ -10,7 +10,7 @@ for _ in range(case_N):
 max_stick = stick_list[-1]
 cnt = 1
 
-for stick in range(case_N):
+for _ in range(case_N):
     compare_stick = stick_list.pop()
     if max_stick < compare_stick:
         cnt += 1
