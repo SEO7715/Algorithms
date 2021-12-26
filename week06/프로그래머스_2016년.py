@@ -44,8 +44,8 @@ b = 24
 #         tmp = 335 + b
 #     return 요일계산(tmp)
 
-# print(solution(a, b))
 
+# print(solution(a, b))
 def solution(a, b):
     month_list = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     calculate_day = sum(month_list[:a] + b)
