@@ -1,46 +1,18 @@
-answers = [1,2,3,4,5]	
+answers = [1, 3, 2, 4, 2]	
 
 def solution(answers):
-    N = len(answers)
+    N = len(answers) #5
     result= []
-    count_list = [0, 0, 0]
-    first_number_list, second_number_list, third_number_list = [1, 2, 3, 4, 5], [2, 1, 2, 3, 2, 4, 2, 5], [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
-    new_first_number_list, new_second_number_list, new_third_number_list = [], [], []
+    first_list, second_list, third_list = [1, 2, 3, 4, 5], [2, 1, 2, 3, 2, 4, 2, 5], [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    len_first_list, len_second_list, len_third_list = len(first_list), len(second_list), len(third_list)
+    answer_first_list, answer_second_list, answer_third_listt = [], [], []
 
-    for _ in range(N):
+    print(len_first_list)
+    print(len_second_list)
+    print(len_third_list)
+    # for _ in range(N):
         
-        if len(first_number_list) > N:
-            break
-        for i in range(len(first_number_list)):
-            new_first_number_list.append(first_number_list[i%N])
-
-        if len(new_second_number_list) > N:
-            break
-        for i in range(len(second_number_list)):
-            new_second_number_list.append(second_number_list[i%N])
-
-        if len(new_third_number_list) > N:
-            break
-        for i in range(len(third_number_list)):
-            new_third_number_list.append(third_number_list[i%N])
-
-    print(new_first_number_list, new_second_number_list, new_third_number_list)
-
-    for i in range(N):
-        if new_first_number_list[i] == answers[i]:
-            count_list[0] += 1
-        if new_second_number_list[i] == answers[i]:
-            count_list[1] += 1
-        if new_third_number_list[i] == answers[i]:
-            count_list[2] += 1
-    print(count_list)
-
-    for i in range(len(count_list)):        
-        if count_list[i] == max(count_list):
-            result.append(i+1)
-        if result and count_list[i] > max(result):
-            result.clear()
-            result.append(i+1)
+        
 
     return result
 
